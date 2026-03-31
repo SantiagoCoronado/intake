@@ -1,0 +1,34 @@
+version: "1.0"
+default_deny: true
+
+rules:
+  # Owner can do anything
+  - channel: "owner_cli"
+    trust: 30  # OWNER
+    allow: ["*"]
+    priority: 0
+
+  # System messages can do anything
+  - channel: "system"
+    trust: 30  # OWNER
+    allow: ["*"]
+    priority: 0
+
+  # External email: read-only operations only
+  - channel: "external_email"
+    trust: 10  # UNTRUSTED
+    allow: ["read_email", "list_emails", "summarize"]
+    deny: ["shell_exec", "file_delete", "send_email"]
+    priority: 10
+
+  # Catch-all: anything untrusted is heavily restricted
+  - channel: "*"
+    trust: 10  # UNTRUSTED
+    deny: ["shell_exec", "file_delete", "send_email"]
+    priority: 5
+
+  # Hostile content: deny everything
+  - channel: "*"
+    trust: 0  # HOSTILE
+    deny: ["*"]
+    priority: 100
