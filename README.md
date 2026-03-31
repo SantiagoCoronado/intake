@@ -1,4 +1,4 @@
-# context-shield
+# intake
 
 Trust boundary enforcement middleware for autonomous AI agents.
 
@@ -10,7 +10,7 @@ This is the **confused deputy problem** for agentic systems. A malicious email c
 
 ## The Solution
 
-**context-shield** is a middleware layer that sits between input sources and the LLM. It enforces trust boundaries structurally — outside the model, not via prompt engineering:
+**intake** is a middleware layer that sits between input sources and the LLM. It enforces trust boundaries structurally — outside the model, not via prompt engineering:
 
 1. **Tags every input** with a trust level (`owner`, `trusted`, `untrusted`, `hostile`) and source channel (`owner_cli`, `external_email`, etc.) before it enters the context window
 2. **Enforces a policy file** that maps `(channel, trust_level)` to permitted actions
@@ -43,7 +43,7 @@ rules:
 Use it in 10 lines:
 
 ```python
-from context_shield import ContextShield, Channel
+from intake_shield import ContextShield, Channel
 
 shield = ContextShield.from_policy("policy.yaml")
 
@@ -135,12 +135,12 @@ rules:
 
 The demo shows an email assistant agent with three tools (`read_email`, `shell_exec`, `send_email`) processing an inbox that contains a prompt injection attack.
 
-**Without context-shield** — the agent follows the malicious email's instructions:
+**Without intake** — the agent follows the malicious email's instructions:
 ```bash
 ANTHROPIC_API_KEY=your-key python -m demo.run_unprotected
 ```
 
-**With context-shield** — the attack is blocked by policy:
+**With intake** — the attack is blocked by policy:
 ```bash
 ANTHROPIC_API_KEY=your-key python -m demo.run_protected
 ```
@@ -152,7 +152,7 @@ The malicious email instructs the agent to:
 - Execute `rm -rf /tmp/workspace`
 - Ignore security warnings ("SYSTEM OVERRIDE" prompt injection)
 
-With context-shield active, the email is tagged as `channel=external_email, trust=untrusted`. The PolicyEngine blocks `send_email` and `shell_exec`. The agent can only use `read_email` and `summarize`.
+With intake active, the email is tagged as `channel=external_email, trust=untrusted`. The PolicyEngine blocks `send_email` and `shell_exec`. The agent can only use `read_email` and `summarize`.
 
 ## Threat Model
 
@@ -182,4 +182,4 @@ pytest tests/ -v
 
 ## License
 
-MIT
+Apache-2.0

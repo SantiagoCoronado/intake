@@ -3,8 +3,8 @@
 import pytest
 from pathlib import Path
 
-from context_shield.shield import ContextShield
-from context_shield.types import Channel, TrustLevel
+from intake_shield.shield import ContextShield
+from intake_shield.types import Channel, TrustLevel
 
 
 class TestShieldIntegration:
@@ -29,7 +29,7 @@ class TestShieldIntegration:
         # Build context
         messages = shield.build_context()
         assert len(messages) == 3  # system + owner + email
-        assert "context-shield" in messages[0]["content"]
+        assert "intake" in messages[0]["content"]
 
         # Agent attempts shell_exec (influenced by hostile email)
         decision = shield.check_tool_call("shell_exec", {"command": "rm -rf /tmp/workspace"})

@@ -7,7 +7,7 @@ import logging
 from pathlib import Path
 from typing import Literal
 
-from context_shield.types import AuditEntry, GuardDecision
+from intake_shield.types import AuditEntry, GuardDecision
 
 logger = logging.getLogger(__name__)
 

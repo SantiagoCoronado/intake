@@ -3,14 +3,14 @@
 import pytest
 from pathlib import Path
 
-from context_shield.policy import PolicyEngine
-from context_shield.types import (
+from intake_shield.policy import PolicyEngine
+from intake_shield.types import (
     Channel,
     PolicyConfig,
     PolicyRule,
     TrustLevel,
 )
-from context_shield.exceptions import PolicyLoadError, PolicyValidationError
+from intake_shield.exceptions import PolicyLoadError, PolicyValidationError
 
 
 @pytest.fixture

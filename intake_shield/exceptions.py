@@ -1,15 +1,15 @@
-"""Custom exceptions for context-shield."""
+"""Custom exceptions for intake."""
 
 from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from context_shield.types import GuardDecision
+    from intake_shield.types import GuardDecision
 
 
 class ContextShieldError(Exception):
-    """Base exception for context-shield."""
+    """Base exception for intake."""
 
 
 class PolicyLoadError(ContextShieldError):

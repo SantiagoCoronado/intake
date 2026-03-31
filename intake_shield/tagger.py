@@ -5,7 +5,7 @@ from __future__ import annotations
 import logging
 from typing import Any, Callable
 
-from context_shield.types import Channel, TaggedInput, TrustLevel
+from intake_shield.types import Channel, TaggedInput, TrustLevel
 
 logger = logging.getLogger(__name__)
 

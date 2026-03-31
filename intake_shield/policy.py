@@ -9,8 +9,8 @@ from typing import Any
 import yaml
 from pydantic import ValidationError
 
-from context_shield.exceptions import PolicyLoadError, PolicyValidationError
-from context_shield.types import (
+from intake_shield.exceptions import PolicyLoadError, PolicyValidationError
+from intake_shield.types import (
     Channel,
     PolicyConfig,
     PolicyRule,

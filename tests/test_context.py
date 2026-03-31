@@ -2,9 +2,9 @@
 
 import pytest
 
-from context_shield.context import ContextWindowBuilder, TRUST_PROTOCOL_PREAMBLE
-from context_shield.tagger import ContextTagger
-from context_shield.types import Channel, TrustLevel
+from intake_shield.context import ContextWindowBuilder, TRUST_PROTOCOL_PREAMBLE
+from intake_shield.tagger import ContextTagger
+from intake_shield.types import Channel, TrustLevel
 
 
 @pytest.fixture
@@ -39,12 +39,12 @@ class TestContextWindowBuilder:
 
         user_msg = messages[1]
         assert user_msg["role"] == "user"
-        assert '<context-shield channel="external_email"' in user_msg["content"]
+        assert '<intake channel="external_email"' in user_msg["content"]
         assert 'trust="untrusted"' in user_msg["content"]
         assert f'id="{tagged.id}"' in user_msg["content"]
         assert 'source="email from alice@corp.com"' in user_msg["content"]
         assert "Hello world" in user_msg["content"]
-        assert "</context-shield>" in user_msg["content"]
+        assert "</intake>" in user_msg["content"]
 
     def test_multiple_inputs_ordered(
         self, builder: ContextWindowBuilder, tagger: ContextTagger

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Demo: Protected agent — shows how context-shield blocks prompt injection.
+"""Demo: Protected agent — shows how intake blocks prompt injection.
 
 Run: python -m demo.run_protected
 
@@ -12,9 +12,9 @@ import logging
 import sys
 from pathlib import Path
 
-from context_shield.shield import ContextShield
-from context_shield.types import Channel
-from context_shield.exceptions import ActionBlockedError
+from intake_shield.shield import ContextShield
+from intake_shield.types import Channel
+from intake_shield.exceptions import ActionBlockedError
 from demo.agent import run_agent_loop
 from demo.mock_inbox import get_all_emails
 from demo.tools import TOOLS, sent_emails, executed_commands
@@ -33,7 +33,7 @@ def main() -> None:
     print("CONTEXT-SHIELD DEMO: PROTECTED AGENT")
     print("=" * 70)
     print()
-    print("This demo shows an agent WITH context-shield processing the same emails.")
+    print("This demo shows an agent WITH intake processing the same emails.")
     print("Each email is tagged with trust metadata. The policy engine blocks")
     print("dangerous tool calls from untrusted sources.")
     print()
@@ -143,7 +143,7 @@ def main() -> None:
         )
 
     if not executed_commands and not sent_emails:
-        print("\n  ** The attack was BLOCKED — context-shield enforced trust boundaries **")
+        print("\n  ** The attack was BLOCKED — intake enforced trust boundaries **")
 
     print()
 

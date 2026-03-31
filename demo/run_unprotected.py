@@ -27,7 +27,7 @@ def main() -> None:
     print("CONTEXT-SHIELD DEMO: UNPROTECTED AGENT")
     print("=" * 70)
     print()
-    print("This demo shows an agent WITHOUT context-shield processing emails.")
+    print("This demo shows an agent WITHOUT intake processing emails.")
     print("The agent has tools: read_email, list_emails, shell_exec, send_email, summarize")
     print("One email contains a prompt injection attack.")
     print()

@@ -6,11 +6,11 @@ import functools
 import logging
 from typing import Any, Callable
 
-from context_shield.audit import AuditLog
-from context_shield.exceptions import ActionBlockedError
-from context_shield.policy import PolicyEngine
-from context_shield.provenance import ProvenanceTracker
-from context_shield.types import AuditEntry, GuardDecision, ToolCall
+from intake_shield.audit import AuditLog
+from intake_shield.exceptions import ActionBlockedError
+from intake_shield.policy import PolicyEngine
+from intake_shield.provenance import ProvenanceTracker
+from intake_shield.types import AuditEntry, GuardDecision, ToolCall
 
 logger = logging.getLogger(__name__)
 

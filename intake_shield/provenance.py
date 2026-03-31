@@ -4,8 +4,8 @@ from __future__ import annotations
 
 import logging
 
-from context_shield.exceptions import ProvenanceError
-from context_shield.types import Channel, TaggedInput, TrustLevel
+from intake_shield.exceptions import ProvenanceError
+from intake_shield.types import Channel, TaggedInput, TrustLevel
 
 logger = logging.getLogger(__name__)
 

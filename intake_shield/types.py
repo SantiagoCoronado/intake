@@ -1,4 +1,4 @@
-"""Core data structures for context-shield."""
+"""Core data structures for intake."""
 
 from __future__ import annotations
 

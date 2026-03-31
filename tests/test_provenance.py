@@ -2,10 +2,10 @@
 
 import pytest
 
-from context_shield.provenance import ProvenanceTracker
-from context_shield.tagger import ContextTagger
-from context_shield.types import Channel, TrustLevel
-from context_shield.exceptions import ProvenanceError
+from intake_shield.provenance import ProvenanceTracker
+from intake_shield.tagger import ContextTagger
+from intake_shield.types import Channel, TrustLevel
+from intake_shield.exceptions import ProvenanceError
 
 
 @pytest.fixture

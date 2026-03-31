@@ -1,6 +1,6 @@
-"""context-shield: Trust boundary enforcement for autonomous AI agents."""
+"""intake: Trust boundary enforcement for autonomous AI agents."""
 
-from context_shield.types import (
+from intake_shield.types import (
     AuditEntry,
     Channel,
     GuardDecision,
@@ -10,14 +10,14 @@ from context_shield.types import (
     ToolCall,
     TrustLevel,
 )
-from context_shield.tagger import ContextTagger
-from context_shield.policy import PolicyEngine
-from context_shield.guard import ActionGuard
-from context_shield.provenance import ProvenanceTracker
-from context_shield.audit import AuditLog
-from context_shield.context import ContextWindowBuilder
-from context_shield.shield import ContextShield
-from context_shield.exceptions import (
+from intake_shield.tagger import ContextTagger
+from intake_shield.policy import PolicyEngine
+from intake_shield.guard import ActionGuard
+from intake_shield.provenance import ProvenanceTracker
+from intake_shield.audit import AuditLog
+from intake_shield.context import ContextWindowBuilder
+from intake_shield.shield import ContextShield
+from intake_shield.exceptions import (
     ActionBlockedError,
     ContextShieldError,
     PolicyLoadError,

@@ -2,8 +2,8 @@
 
 import pytest
 
-from context_shield.tagger import ContextTagger, DEFAULT_TRUST_MAP
-from context_shield.types import Channel, TaggedInput, TrustLevel
+from intake_shield.tagger import ContextTagger, DEFAULT_TRUST_MAP
+from intake_shield.types import Channel, TaggedInput, TrustLevel
 
 
 class TestContextTagger:
