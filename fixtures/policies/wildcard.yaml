@@ -1,0 +1,13 @@
+version: "1.0"
+default_deny: true
+
+rules:
+  # Wildcard channel: deny "dangerous" for all untrusted
+  - channel: "*"
+    trust: 10
+    deny: ["dangerous"]
+
+  # Wildcard trust: deny shell_exec for email regardless of trust
+  - channel: "external_email"
+    trust: "*"
+    deny: ["shell_exec"]

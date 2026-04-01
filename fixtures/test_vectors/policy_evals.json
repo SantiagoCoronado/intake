@@ -1,0 +1,92 @@
+[
+  {
+    "description": "Owner allowed everything via wildcard allow",
+    "policy_file": "basic.yaml",
+    "tool": "shell_exec",
+    "channel": "owner_cli",
+    "trust": 30,
+    "expected_allowed": true,
+    "expected_has_matched_rule": true
+  },
+  {
+    "description": "Untrusted email allowed read_email",
+    "policy_file": "basic.yaml",
+    "tool": "read_email",
+    "channel": "external_email",
+    "trust": 10,
+    "expected_allowed": true,
+    "expected_has_matched_rule": true
+  },
+  {
+    "description": "Untrusted email denied shell_exec",
+    "policy_file": "basic.yaml",
+    "tool": "shell_exec",
+    "channel": "external_email",
+    "trust": 10,
+    "expected_allowed": false,
+    "expected_reason_contains": "shell_exec"
+  },
+  {
+    "description": "Untrusted email denied send_email",
+    "policy_file": "basic.yaml",
+    "tool": "send_email",
+    "channel": "external_email",
+    "trust": 10,
+    "expected_allowed": false,
+    "expected_has_matched_rule": true
+  },
+  {
+    "description": "Hostile denied read_email",
+    "policy_file": "basic.yaml",
+    "tool": "read_email",
+    "channel": "external_email",
+    "trust": 0,
+    "expected_allowed": false,
+    "expected_has_matched_rule": true
+  },
+  {
+    "description": "Hostile denied shell_exec",
+    "policy_file": "basic.yaml",
+    "tool": "shell_exec",
+    "channel": "external_email",
+    "trust": 0,
+    "expected_allowed": false,
+    "expected_has_matched_rule": true
+  },
+  {
+    "description": "Hostile denied arbitrary tool",
+    "policy_file": "basic.yaml",
+    "tool": "anything",
+    "channel": "external_email",
+    "trust": 0,
+    "expected_allowed": false,
+    "expected_has_matched_rule": true
+  },
+  {
+    "description": "Wildcard channel matches any channel for untrusted",
+    "policy_file": "wildcard.yaml",
+    "tool": "dangerous",
+    "channel": "external_discord",
+    "trust": 10,
+    "expected_allowed": false,
+    "expected_has_matched_rule": true
+  },
+  {
+    "description": "Wildcard trust denies shell_exec for email even at owner trust",
+    "policy_file": "wildcard.yaml",
+    "tool": "shell_exec",
+    "channel": "external_email",
+    "trust": 30,
+    "expected_allowed": false,
+    "expected_has_matched_rule": true
+  },
+  {
+    "description": "Higher priority allow overrides lower priority deny",
+    "policy_file": "priority_override.yaml",
+    "tool": "tool_a",
+    "channel": "external_email",
+    "trust": 10,
+    "expected_allowed": true,
+    "expected_matched_priority": 10
+  }
+]

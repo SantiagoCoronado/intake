@@ -1,0 +1,22 @@
+version: "1.0"
+default_deny: true
+
+rules:
+  # Owner can do anything
+  - channel: "owner_cli"
+    trust: 30
+    allow: ["*"]
+    priority: 0
+
+  # Untrusted email: limited operations
+  - channel: "external_email"
+    trust: 10
+    allow: ["read_email", "summarize"]
+    deny: ["shell_exec", "send_email"]
+    priority: 10
+
+  # Hostile: deny everything
+  - channel: "*"
+    trust: 0
+    deny: ["*"]
+    priority: 100

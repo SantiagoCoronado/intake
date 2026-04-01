@@ -1,0 +1,15 @@
+version: "1.0"
+default_deny: true
+
+rules:
+  # Low priority: deny tool_a
+  - channel: "*"
+    trust: "*"
+    deny: ["tool_a"]
+    priority: 1
+
+  # High priority: allow tool_a (overrides the deny)
+  - channel: "*"
+    trust: "*"
+    allow: ["tool_a"]
+    priority: 10
